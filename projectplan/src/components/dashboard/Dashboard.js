@@ -25,7 +25,7 @@
  };
 
  const mapStateTpProps = (state) => {
-   console.log(state);
+   //console.log(state);
    return {
      project: state.firestore.ordered.projects
    }
