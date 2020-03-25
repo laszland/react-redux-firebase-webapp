@@ -14,12 +14,21 @@ const ProjectDetails = (props) => {
       <div className="container section project-details">
         <div className="card depth-2">
           <div className="card-content">
+            <ul className="right">
+              <a class="btn-floating btn-small waves-effect waves-light pink lighten-1">
+                <i class="material-icons">edit</i>
+              </a>
+              <span> </span>
+              <a class="btn-floating btn-small waves-effect waves-light pink lighten-1">
+                <i class="material-icons">delete</i>
+              </a>
+            </ul>
             <span className="card-title">{ project.title }</span>
             <p>{ project.content }</p>
           </div>
           <div className="card-action grey lighten-4 grey-text">
-          <div>Posted by { project.authorFirstName } { project.authorLastName }</div>
-          <div>{moment(project.createdAt.toDate()).calendar()}</div>
+            <div>Posted by { project.authorFirstName } { project.authorLastName }</div>
+            <div>{moment(project.createdAt.toDate()).calendar()}</div>
           </div>
         </div>
       </div>
