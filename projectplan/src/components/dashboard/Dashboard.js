@@ -26,7 +26,7 @@
    }
  };
 
- const mapStateTpProps = (state) => {
+ const mapStateToProps = (state) => {
    //console.log(state);
    return {
      project: state.firestore.ordered.projects,
@@ -35,9 +35,7 @@
    }
  }
 
-export default compose(
-  connect(mapStateTpProps),
-  firestoreConnect([
+export default compose(connect(mapStateToProps), firestoreConnect([
     { collection: 'projects', orderBy: ['createdAt', 'desc'] },
     { collection: 'notifications', limit: 3, orderBy: ['time', 'desc'] }
   ])

@@ -4,6 +4,7 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { Redirect } from 'react-router-dom';
 import moment from 'moment';
+import projectDeleteModal from './projectDeleteModal';
 
 const ProjectDetails = (props) => {
   //console.log(props);
@@ -14,7 +15,7 @@ const ProjectDetails = (props) => {
       <div className="container section project-details">
         <div className="card depth-2">
           <div className="card-content">
-            <ul className="right">
+            {/* <ul className="right">
               <a class="btn-floating btn-small waves-effect waves-light pink lighten-1">
                 <i class="material-icons">edit</i>
               </a>
@@ -22,13 +23,14 @@ const ProjectDetails = (props) => {
               <a class="btn-floating btn-small waves-effect waves-light pink lighten-1">
                 <i class="material-icons">delete</i>
               </a>
-            </ul>
+            </ul> */}
             <span className="card-title">{ project.title }</span>
             <p>{ project.content }</p>
           </div>
           <div className="card-action grey lighten-4 grey-text">
             <div>Posted by { project.authorFirstName } { project.authorLastName }</div>
             <div>{moment(project.createdAt.toDate()).calendar()}</div>
+            <projectDeleteModal/>
           </div>
         </div>
       </div>
