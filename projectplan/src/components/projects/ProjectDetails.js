@@ -4,7 +4,8 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { Redirect } from 'react-router-dom';
 import moment from 'moment';
-import projectDeleteModal from './projectDeleteModal';
+import Delete from './projectDeleteModal';
+import Edit from './projectEditModal';
 
 const ProjectDetails = (props) => {
   //console.log(props);
@@ -15,24 +16,37 @@ const ProjectDetails = (props) => {
       <div className="container section project-details">
         <div className="card depth-2">
           <div className="card-content">
-            {/* <ul className="right">
-              <a class="btn-floating btn-small waves-effect waves-light pink lighten-1">
-                <i class="material-icons">edit</i>
-              </a>
-              <span> </span>
-              <a class="btn-floating btn-small waves-effect waves-light pink lighten-1">
-                <i class="material-icons">delete</i>
-              </a>
-            </ul> */}
-            <span className="card-title">{ project.title }</span>
-            <p>{ project.content }</p>
+            <nav className="z-depth-0">
+              <div className="nav-wrapper white black-text">
+                <div className="brand-logo left">
+                  <span className="card-title black-text">{ project.title }</span>
+                </div>
+                <ul className="right">
+                  <li><Edit/></li>
+                  <li><Delete/></li>
+                </ul>
+              </div>
+            </nav>
+            <div className="row">
+              <p class="col left-align">{ project.content }</p>
+            </div>
           </div>
-          <div className="card-action grey lighten-4 grey-text">
-            <div>Posted by { project.authorFirstName } { project.authorLastName }</div>
-            <div>{moment(project.createdAt.toDate()).calendar()}</div>
-            <projectDeleteModal/>
+          <div className="card-action grey lighten-4 grey-text row">
+            <div className="col l12">Posted by { project.authorFirstName } { project.authorLastName }</div>
+            <div className="col l12">{moment(project.createdAt.toDate()).calendar()}</div>
           </div>
         </div>
+
+      <div id="edit" className="modal">
+        <div className="modal-content">
+          <h4>Modal Header</h4>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus quis architecto quasi autem rerum dicta velit dolorem possimus, atque ipsum accusantium quo odit distinctio impedit illo porro doloribus natus fugiat?</p>
+        </div>
+        <div className="modal-footer">
+          <a href="#!" className="modal-close waves-effect waves-pink btn-flat">Agree</a>
+        </div>
+      </div>
+
       </div>
     )
   } else {
