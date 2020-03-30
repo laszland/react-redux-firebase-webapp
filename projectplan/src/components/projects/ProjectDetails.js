@@ -5,7 +5,6 @@ import { compose } from 'redux';
 import { Redirect } from 'react-router-dom';
 import moment from 'moment';
 import Delete from './projectDeleteModal';
-import Edit from './projectEditModal';
 
 const ProjectDetails = (props) => {
   //console.log(props);
@@ -22,7 +21,6 @@ const ProjectDetails = (props) => {
                   <span className="card-title black-text">{ project.title }</span>
                 </div>
                 <ul className="right">
-                  <li><Edit/></li>
                   <li><Delete/></li>
                 </ul>
               </div>

@@ -53,15 +53,15 @@ class Delete extends Component {
               If you want Fixed Footer Modal then add
               modal-fixed-footer to the "modal" div */}
           <div className="modal-content black-text">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
+            <p className="grey-text text-darken-2">Delete Project</p>
+            <p className="center-align flow-text">Do you really want to delete this project?</p>
           </div>
-          <div className="modal-footer">
-            <a className="modal-close waves-effect waves-red btn-flat">
-              Disagree
+          <div className="center">
+            <a className="modal-close btn pink white-text"><i className="material-icons white-text left small">check</i>
+              Yes
             </a>
-            <a className="modal-close waves-effect waves-green btn-flat">
-              Agree
+            <a className="modal-close btn pink white-text"><i className="material-icons small white-text left">close</i>
+              No
             </a>
           </div>
         </div>
