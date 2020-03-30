@@ -8,7 +8,8 @@ import Delete from './projectDeleteModal';
 
 const ProjectDetails = (props) => {
   //console.log(props);
-  const { project, auth } = props;
+  const { project, auth, id } = props;
+  console.log(project)
   if (!auth.uid) return < Redirect to='/signin'/>
   if (project) {
     return (
@@ -20,9 +21,11 @@ const ProjectDetails = (props) => {
                 <div className="brand-logo left">
                   <span className="card-title black-text">{ project.title }</span>
                 </div>
-                <ul className="right">
-                  <li><Delete/></li>
-                </ul>
+
+                { (auth.uid === project.authorId) ?  <ul className="right">
+                  <li><Delete project={ project } id={ id }/></li>
+                </ul> : null }
+
               </div>
             </nav>
             <div className="row">
@@ -57,13 +60,14 @@ const ProjectDetails = (props) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  // console.log(state);
   const id = ownProps.match.params.id;
   const projects = state.firestore.data.projects;
   const project = projects ? projects[id] : undefined;
+  console.log(project);
   return {
     project: project,
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    id: ownProps.match.params.id
   }
 }
 

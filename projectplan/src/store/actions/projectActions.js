@@ -12,9 +12,22 @@ export const createProject = (project) => {
       authorId: authorId,
       createdAt: new Date()
     }).then(() => {
-      dispatch({ type: 'CREATE_PROJECT', project})
+      dispatch({ type: 'CREATE_PROJECT', project })
     }).catch((err) => {
-      dispatch({ type: 'CREATE_PROJECT_ERROR', err})
+      dispatch({ type: 'CREATE_PROJECT_ERROR', err })
     })
+  }
+};
+
+export const deleteProject = (id) => {
+  return (dispatch, getState, { getFirestore }) => {
+    // do some async code
+    const firestore = getFirestore();
+    firestore.collection('projects').doc(id).delete()
+      .then(() => {
+        dispatch({ type: 'DELETE_PROJECT', id });
+      }).catch((err) => {
+        dispatch({ type: 'DELETE_PROJECT_ERROR', err })
+      })
   }
 };
