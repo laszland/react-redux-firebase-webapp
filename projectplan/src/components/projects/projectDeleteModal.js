@@ -3,7 +3,7 @@ import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
 import { connect } from 'react-redux';
 import { deleteProject } from '../../store/actions/projectActions';
-import { Redirect } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 
 class Delete extends Component {
 
@@ -39,7 +39,7 @@ class Delete extends Component {
   handleDelete = (e) => {
     e.preventDefault();
     this.props.deleteProject(this.props.id);
-    this.props.history.push('/'); //TODO: solve push back bug!!!
+    this.props.history.push('/');
   }
 
   render() {
@@ -61,7 +61,7 @@ class Delete extends Component {
           <div className="modal-content black-text">
             <p className="grey-text text-darken-2">Delete Project</p>
             <p className="center-align flow-text">Do you really want to delete this project?</p>
-            <p className="center-align">{ project.title } { id }</p> {/* TODO: delete id */}
+            <p className="center-align">{ project.title } { id }</p>
           </div>
           <div className="center">
             <a className="modal-close btn pink white-text" onClick={ this.handleDelete } ><i className="material-icons white-text left small">check</i>
@@ -89,4 +89,4 @@ const dispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, dispatchToProps)(Delete);
+export default withRouter(connect(mapStateToProps, dispatchToProps)(Delete));
